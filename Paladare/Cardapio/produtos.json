@@ -1,0 +1,59 @@
+
+[
+    {
+        "id": 0,
+        "titulo": "X-Salada",
+        "descricao": "Pão, hambúrguer, queijo, tomate, alface, maionese, ketchup, mostarda",
+        "imagem": "../images/lanche.jpg",
+        "preco": "R$: 10,00"
+    },
+    {
+        "id": 1,
+        "titulo": "X-Burguer",
+        "descricao": "Pão, hambúrguer, queijo, maionese, ketchup, mostarda",
+        "imagem": "../images/lanche.jpg",
+        "preco": "R$: 9,00"
+    },
+    {
+        "id": 2,
+        "titulo": "Cheddar",
+        "descricao": "Pão, hambúrguer, bacon, cheddar, queijo, maionese, ketchup, mostarda",
+        "imagem": "../images/lanche.jpg",
+        "preco": "R$: 17,00"
+    },
+    {
+        "id": 3,
+        "titulo": "X-Egg",
+        "descricao": "Pão, hambúrguer, queijo, ovo, bacon, tomate, alface, maionese, ketchup, mostarda",
+        "imagem": "../images/lanche.jpg",
+        "preco": "R$: 17,00"
+    },
+    {
+        "id": 4,
+        "titulo": "X-Tudo",
+        "descricao": "Pão, hambúrguer, bacon, ovo, calabresa, salame, milho, presunto, queijo, batata-palha, tomate, alface, maionese, ketchup, mostarda",
+        "imagem": "../images/lanche.jpg",
+        "preco": "R$: 23,00"
+    },
+    {
+        "id": 5,
+        "titulo": "X-Bacon",
+        "descricao": "Pão, hambúrguer, bacon, queijo, tomate, alface, maionese, ketchup, mostarda",
+        "imagem": "../images/lanche.jpg",
+        "preco": "R$: 15,00"
+    },
+    {
+        "id": 6,
+        "titulo": "X-Bacon Especial",
+        "descricao": "Pão, hambúrguer, bacon, queijo, presunto, ovo, tomate, alface, maionese, ketchup, mostarda",
+        "imagem": "../images/lanche.jpg",
+        "preco": "R$: 17,00"
+    },
+    {
+        "id": 7,
+        "titulo": "X-Calabresa",
+        "descricao": "Pão, hambúrguer, calabresa, queijo, tomate, alface, maionese, ketchup, mostarda",
+        "imagem": "../images/lanche.jpg",
+        "preco": "R$: 15,00"
+    }
+]
