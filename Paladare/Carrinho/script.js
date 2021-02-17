@@ -33,3 +33,38 @@ $(document).ready(function(){
         $('.menu-btn i').toggleClass("active");
     });
 });
+var total = [0];
+function renderItem(item) {
+    // Adicionando uma div com o item e a quantidade na div .items
+    var carrinhoExibir = document.getElementById("carrinho-produtos");
+
+    carrinhoExibir.innerHTML += `
+    <div class="column left">
+        <div class="name">${item.name}</div>
+        <div class="price">${parseFloat(item.preco).toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}</div>
+        <div class="qty">Quantidade: <input type="number" id="qtd" value="${item.qtd}" min="1" step="1" class="itemQuantity"></div>
+        <div class="subtotal">Subtotal: ${parseFloat(item.qtd * item.preco).toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})} </div>
+    </div>`
+    // var pos = indexOf(item)
+    total.push(parseFloat(item.qtd * item.preco));
+    console.log("o total é de: " + total)    
+}
+
+function getItems() {
+    // Pegando o array do localstorage
+    const items = JSON.parse(localStorage.getItem('items'));
+    // Para cada item do array, é renderizado no html
+    items.forEach(item => renderItem(item));
+}
+function totalFunc(valor){
+    var totalFinal = 0;
+    var totalExibir = document.getElementById("total");
+    totalFinal = valor.reduce((totalFinal, currentElement) => totalFinal + currentElement);
+    console.log("o totalFinal é de: " + totalFinal);
+
+    totalExibir.innerHTML += `O valor total é: ${totalFinal.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}`
+}
+getItems();
+totalFunc(total);
+
+//document.getElementById("qtd").addEventListener("click", renderItem)
