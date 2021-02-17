@@ -159,6 +159,38 @@ footer span a:hover{
     text-decoration: underline;
 }
 
+/* style cart */
+
+.carrinho-area .carrinho-produtos .column{
+    width: 100%;
+}
+.carrinho-produtos .left{
+    width: 55%;
+}
+.carrinho-produtos .left .name{
+    font-family: 'Poppins', sans-serif; 
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+.carrinho-produtos .right{
+    width: 35%;
+}
+
+.carrinho-produtos .right{
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+}
+.list-group-item .price{
+}
+.list-group-item .qty{
+    
+}
+.list-group-item .subtotal{
+    
+}
+.total-style{
+}
+
 
 /* responsive media query start */
 @media (max-width: 1300px) {
