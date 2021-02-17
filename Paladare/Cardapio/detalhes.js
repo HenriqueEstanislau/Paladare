@@ -27,7 +27,7 @@ ajax.addEventListener("readystatechange", function(){
                     <div class="content">
                         <div class="product-name">${resposta[produtoID].titulo}</div>
                         <div class="product-description">${resposta[produtoID].descricao}</div>
-                        <div class="price">${resposta[produtoID].preco}</div>
+                        <div class="price">${parseFloat(resposta[produtoID].preco).toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}</div>
                         <div class="qty">
                             <label>Quantidade</label>
                             <input type="number" id="qtd" value="1" min="1" step="1" class="itemQuantity">
@@ -39,15 +39,18 @@ ajax.addEventListener("readystatechange", function(){
                     </div>
                 </div>
         `
+        // Preparando os dados e colocando em um Objeto para salvalos no LocalStorage
         document.getElementById("adicionar").addEventListener("click", addItem)
         function addItem() {
             
             // Pegando os valores dos campos name e qtd
+            const id = `${resposta[produtoID].id}`;
             const name = `${resposta[produtoID].titulo}`;
             const qtd = document.getElementById("qtd").value;
+            const preco = `${resposta[produtoID].preco}`;
       
             // Criando objeto com dados dos inputs
-            const dataObj = { name, qtd };
+            const dataObj = { id, name, qtd, preco};
       
             /* 
             Todo valor do localstorage é null no inicio (antes de adicionarmos algum valor nele),
@@ -69,9 +72,6 @@ ajax.addEventListener("readystatechange", function(){
             }
             
         }
-
-        // Preparando os dados e colocando em um Objeto para salvalos no LocalStorage
-
                  
 
     }
