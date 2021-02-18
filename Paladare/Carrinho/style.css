@@ -35,16 +35,12 @@ section{
     padding: 0 80px;
     margin: auto;
 }
-.about, .services, .skills, .teams, .contact, footer{
+.cart, footer{
     font-family: 'Poppins', sans-serif;
 }
-.about .about-content, 
-.services .serv-content,
-.skills .skills-content,
-.contact .contact-content{
+.cart .cart-content{
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
+    flex-direction: row;
     justify-content: space-between;
 }
 section .title{
@@ -161,34 +157,62 @@ footer span a:hover{
 
 /* style cart */
 
-.carrinho-area .carrinho-produtos .column{
-    width: 100%;
+.cart .cart-content .left{
+    width: 65%;
+    margin: 0 auto 30px;
 }
-.carrinho-produtos .left{
-    width: 55%;
+.cart .cart-content #carrinho-produtos{
+    /* border: 1px solid #ccc; */
 }
-.carrinho-produtos .left .name{
-    font-family: 'Poppins', sans-serif; 
+.cart .cart-content .left .name{
     font-size: 25px;
-    margin-bottom: 10px;
+    float: left;
 }
-.carrinho-produtos .right{
+.cart .cart-content .left .price{
+    font-size: 20px;
+    float: right;
+}
+.cart .cart-content .left .qty{
+    font-size: 18px;
+}
+.cart .cart-content .left .qty input{
+    font-size: 18px;
+    width: 50px;
+    padding: 5px;
+}
+.cart .cart-content .left .subtotal{
+    font-size: 18px;
+}
+.cart .cart-content .left .remove{
+    font-size: 18px;
+    color: crimson;
+}
+.cart .cart-content .left .remove:hover{
+    cursor: pointer;
+}
+.cart .cart-content .right{
     width: 35%;
 }
-
-.carrinho-produtos .right{
-    font-family: 'Poppins', sans-serif;
-    font-size: 16px;
+.cart .cart-content .right #total{
+    font-size: 25px;
+    font-weight: 500;
+    margin-bottom: 10px;
 }
-.list-group-item .price{
+.cart .cart-content .right a{
+    display: inline-block;
+    background: #ff5722;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 500;
+    padding: 10px 30px;
+    margin-top: 20px;
+    border-radius: 6px;
+    border: 2px solid #ff5722;
+    transition: all 0.3s ease;
 }
-.list-group-item .qty{
-    
-}
-.list-group-item .subtotal{
-    
-}
-.total-style{
+.cart .cart-content .right a:hover{
+    color: #ff5722;
+    background: none;
 }
 
 
@@ -198,18 +222,6 @@ footer span a:hover{
         margin-left: 0px;
     }
 }
-
-@media (max-width: 1104px) {
-    .about .about-content .left img{
-        height: 350px;
-        width: 350px;
-    }
-    .skills .skills-content .right img{
-        height: 350px;
-        width: 350px;
-    }
-}
-
 @media (max-width: 991px) {
     .max-width{
         padding: 0 50px;
@@ -245,44 +257,8 @@ footer span a:hover{
         margin: 20px 0;
         font-size: 25px;
     }
-    .home .home-content .text-2{
-        font-size: 70px;
-    }
-    .home .home-content .text-3{
-        font-size: 35px;
-    }
-    .home .home-content a{
-        font-size: 23px;
-        padding: 10px 30px;
-    }
     .max-width{
         max-width: 930px;
-    }
-    .about .about-content .column{
-        width: 100%;
-    }
-    .about .about-content .left{
-        display: flex;
-        justify-content: center;
-        margin: 0 auto 60px;
-    }
-    .about .about-content .right{
-        flex: 100%;
-    }
-    .services .serv-content .card{
-        width: calc(50% - 10px);
-        margin-bottom: 20px;
-    }
-    .skills .skills-content .column,
-    .contact .contact-content .column{
-        width: 100%;
-        margin-bottom: 35px;
-    }
-
-    .skills .skills-content .right{
-        display: flex;
-        justify-content: center;
-        margin: 0 auto 60px;
     }
     
 }
@@ -291,37 +267,26 @@ footer span a:hover{
     .max-width{
         padding: 0 23px;
     }
-    .home .home-content .text-2{
-        font-size: 60px;
+    .cart .cart-content{
+        display: flex;
+        flex-direction: column;
     }
-    .home .home-content .text-3{
-        font-size: 32px;
-    }
-    .home .home-content a{
-        font-size: 20px;
-    }
-    .services .serv-content .card{
+    .cart .cart-content .column{
         width: 100%;
+    }
+    .cart .cart-content .left{
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto 60px;
+    }
+    .cart .cart-content .right{
+        flex: 100%;
     }
 }
 
 @media (max-width: 500px) {
-    .home .home-content .text-2{
-        font-size: 50px;
-    }
-    .home .home-content .text-3{
-        font-size: 27px;
-    }
-    .about .about-content .right .text,
-    .skills .skills-content .left .text{
+    .cart .cart-content .right .text{
         font-size: 19px;
-    }
-    .contact .right form .fields{
-        flex-direction: column;
-    }
-    .contact .right form .name,
-    .contact .right form .email{
-        margin: 0;
     }
     .scroll-up-btn{
         right: 15px;
@@ -333,21 +298,13 @@ footer span a:hover{
     }
 }
 @media (max-width: 360px) {
-    .about .about-content .left img{
-        height: 300px;
-        width: 300px;
-    }
-    .skills .skills-content .right img{
+    .cart .cart-content .left img{
         height: 300px;
         width: 300px;
     }
 }
 @media (max-width: 305px) {
-    .about .about-content .left img{
-        height: 250px;
-        width: 250px;
-    }
-    .skills .skills-content .right img{
+    .cart .cart-content .left img{
         height: 250px;
         width: 250px;
     }
