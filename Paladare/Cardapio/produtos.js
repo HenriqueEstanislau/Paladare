@@ -20,7 +20,7 @@ ajax.addEventListener("readystatechange", function(){
                 <div class="img"><img src="${valor.imagem}" alt=""></div>
                 <div class="content">
                     <div class="product-name">${valor.titulo}</div>
-                    <div class="price">${valor.preco}</div>
+                    <div class="price">${parseFloat(valor.preco).toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}</div>
                     <div style="clear:both"></div>
     
                     <div class="product-description">${valor.descricao}<br><br></div>
