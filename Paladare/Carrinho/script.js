@@ -34,7 +34,7 @@ $(document).ready(function(){
     });
 });
 var total = [0];
-var mensagemWhats = 'https://api.whatsapp.com/send?l=pt_BR&phone=5519993779852&text=Boa%20noite%20pessoal,%20gostaria%20de%20pedir:';
+var mensagemWhats = 'https://api.whatsapp.com/send?l=pt_BR&phone=5519991001491&text=Boa%20noite%20pessoal,%20gostaria%20de%20pedir:';
 function renderItem(item) {
     // Adicionando uma div com o item e a quantidade na div .items
     var carrinhoExibir = document.getElementById("carrinho-produtos");
