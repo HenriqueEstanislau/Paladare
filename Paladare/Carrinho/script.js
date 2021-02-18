@@ -34,6 +34,7 @@ $(document).ready(function(){
     });
 });
 var total = [0];
+var mensagemWhats = 'https://api.whatsapp.com/send?l=pt_BR&phone=5519993779852&text=Boa%20noite%20pessoal,%20gostaria%20de%20pedir:';
 function renderItem(item) {
     // Adicionando uma div com o item e a quantidade na div .items
     var carrinhoExibir = document.getElementById("carrinho-produtos");
@@ -42,12 +43,13 @@ function renderItem(item) {
     <div class="column left">
         <div class="name">${item.name}</div>
         <div class="price">${parseFloat(item.preco).toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}</div>
+        <div style="clear:both"></div>
         <div class="qty">Quantidade: <input type="number" id="qtd" value="${item.qtd}" min="1" step="1" class="itemQuantity"></div>
         <div class="subtotal">Subtotal: ${parseFloat(item.qtd * item.preco).toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})} </div>
+        <div class="remove"><a>Remover</a></div>
     </div>`
     // var pos = indexOf(item)
-    total.push(parseFloat(item.qtd * item.preco));
-    console.log("o total é de: " + total)    
+    total.push(parseFloat(item.qtd * item.preco));  
 }
 
 function getItems() {
@@ -55,16 +57,27 @@ function getItems() {
     const items = JSON.parse(localStorage.getItem('items'));
     // Para cada item do array, é renderizado no html
     items.forEach(item => renderItem(item));
+    items.forEach(item => mensagem(item));
 }
 function totalFunc(valor){
     var totalFinal = 0;
     var totalExibir = document.getElementById("total");
+
     totalFinal = valor.reduce((totalFinal, currentElement) => totalFinal + currentElement);
     console.log("o totalFinal é de: " + totalFinal);
 
-    totalExibir.innerHTML += `O valor total é: ${totalFinal.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}`
+    totalExibir.innerHTML += `Total: ${totalFinal.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}`
+}
+
+function mensagem(item){
+    var buttonWhatsApp = document.getElementById("buttonWhatsapp");
+    mensagemWhats += `%0A${(item.qtd).toString()} - ${(item.name).toString()};`;
+
+    buttonWhatsApp.innerHTML =`<a href="${mensagemWhats} " target="_blank"><i class="fab fa-whatsapp"></i> Fazer pedido</a>`
 }
 getItems();
 totalFunc(total);
+
+
 
 //document.getElementById("qtd").addEventListener("click", renderItem)
