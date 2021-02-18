@@ -390,7 +390,14 @@ design produtos{
     padding: 8px 15px;
     border-radius: 5px;
     cursor: pointer;
-    transition: 0.2s;
+    border-radius: 6px;
+    border: 2px solid #ff5722;
+    transition: all 0.3s ease;
+}
+.card a:hover{
+    background: none;
+    color: #ff5722;
+    transition: color 0.3s ease;
 }
 
 
