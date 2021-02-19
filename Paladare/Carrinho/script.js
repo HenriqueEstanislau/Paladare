@@ -30,17 +30,17 @@ $(document).ready(function(){
     // toggle menu/navbar script
     $('.menu-btn').click(function(){
         $('.navbar .menu').toggleClass("active");
-        $('.menu-btn i').toggleClass("active");
+        $('.menu-btn .fas.fa-bars').toggleClass("active");
     });
 });
 var total = [0];
-var mensagemWhats = 'https://api.whatsapp.com/send?l=pt_BR&phone=5519991001491&text=Boa%20noite%20pessoal,%20gostaria%20de%20pedir:';
+var mensagemWhats = 'https://api.whatsapp.com/send?l=pt_BR&phone=5519993779852&text=Boa%20noite%20pessoal,%20gostaria%20de%20pedir:';
 function renderItem(item) {
     // Adicionando uma div com o item e a quantidade na div .items
     var carrinhoExibir = document.getElementById("carrinho-produtos");
 
     carrinhoExibir.innerHTML += `
-    <div class="column left">
+    <div class="products">
         <div class="name">${item.name}</div>
         <div class="price">${parseFloat(item.preco).toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}</div>
         <div style="clear:both"></div>
