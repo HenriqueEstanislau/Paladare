@@ -78,6 +78,8 @@ function mensagem(item){
 getItems();
 totalFunc(total);
 
-
+function limpar(){
+    localStorage. clear();
+}
 
 //document.getElementById("qtd").addEventListener("click", renderItem)
