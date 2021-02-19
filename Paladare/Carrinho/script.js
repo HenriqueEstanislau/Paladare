@@ -34,7 +34,7 @@ $(document).ready(function(){
     });
 });
 var total = [0];
-var mensagemWhats = 'https://api.whatsapp.com/send?l=pt_BR&phone=5519993779852&text=Boa%20noite%20pessoal,%20gostaria%20de%20pedir:';
+var mensagemWhats = 'https://api.whatsapp.com/send?l=pt_BR&phone=5519994510784&text=Boa%20noite%20pessoal,%20gostaria%20de%20pedir:';
 function renderItem(item) {
     // Adicionando uma div com o item e a quantidade na div .items
     var carrinhoExibir = document.getElementById("carrinho-produtos");
@@ -53,8 +53,8 @@ function renderItem(item) {
 }
 
 function getItems() {
-    // Pegando o array do localstorage
-    const items = JSON.parse(localStorage.getItem('items'));
+    // Pegando o array do sessionStorage
+    const items = JSON.parse(sessionStorage.getItem('items'));
     // Para cada item do array, é renderizado no html
     items.forEach(item => renderItem(item));
     items.forEach(item => mensagem(item));
@@ -78,8 +78,5 @@ function mensagem(item){
 getItems();
 totalFunc(total);
 
-function limpar(){
-    localStorage. clear();
-}
 
 //document.getElementById("qtd").addEventListener("click", renderItem)
