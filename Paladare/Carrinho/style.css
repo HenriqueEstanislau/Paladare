@@ -164,6 +164,12 @@ footer span a:hover{
 .cart .cart-content #carrinho-produtos{
     /* border: 1px solid #ccc; */
 }
+.cart .cart-content .products{
+    border-radius: 6px;
+    border: 2px solid #222;
+    padding: 0 50px 7px;
+    margin: 0px 70px 20px;
+}
 .cart .cart-content .left .name{
     font-size: 25px;
     float: left;
@@ -192,6 +198,11 @@ footer span a:hover{
 }
 .cart .cart-content .right{
     width: 35%;
+}
+.cart .cart-content .right .borderTotal{
+    border-radius: 6px;
+    border: 2px solid #222;
+    padding: 0 20px 18px;
 }
 .cart .cart-content .right #total{
     font-size: 25px;
@@ -260,9 +271,24 @@ footer span a:hover{
     .max-width{
         max-width: 930px;
     }
+    .cart .cart-content .products{
+        padding: 0 10px 7px;
+        margin: 0px 20px 20px;
+    }
     
 }
-
+@media (max-width: 860px) {
+    .cart .cart-content .right .borderTotal{
+        padding: 0 5px 18px;
+    }
+    .cart .cart-content .right #total{
+        font-size: 22px;
+    }
+    .cart .cart-content .right a{
+        font-size: 18px;
+        padding: 10px 20px;
+    }
+}
 @media (max-width: 690px) {
     .max-width{
         padding: 0 23px;
@@ -282,6 +308,18 @@ footer span a:hover{
     .cart .cart-content .right{
         flex: 100%;
     }
+    /*reajustando total para tamanho padrão*/
+    .cart .cart-content .right .borderTotal{
+        padding: 0 20px 18px;
+        border: none;
+    }
+    .cart .cart-content .right #total{
+        font-size: 25px;
+    }
+    .cart .cart-content .right a{
+        font-size: 20px;
+        padding: 10px 30px;
+    }
 }
 
 @media (max-width: 500px) {
@@ -296,6 +334,19 @@ footer span a:hover{
         font-size: 23px;
         line-height: 38px;
     }
+    .cart .cart-content .products{
+        padding: 0 10px 7px;
+        margin: 0px 0px 20px;
+    }
+}
+@media (max-width: 400px){
+    .max-width{
+        padding: 0 10px;
+    }
+    .cart .cart-content .left .name{
+        font-size: 22px;
+        float: left;
+    }
 }
 @media (max-width: 360px) {
     .cart .cart-content .left img{
@@ -303,9 +354,14 @@ footer span a:hover{
         width: 300px;
     }
 }
+
 @media (max-width: 305px) {
     .cart .cart-content .left img{
         height: 250px;
         width: 250px;
+    }
+    .cart .cart-content .right a{
+        font-size: 20px;
+        padding: 10px 20px;
     }
 }
