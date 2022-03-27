@@ -34,7 +34,7 @@ ajax.addEventListener("readystatechange", function(){
 
 // Passo o ID do produto atraves do metodo get para a pagina "detalhes.js"
         var passaValor= function(valor){
-            window.location = "detalhes.html?minhaVariavel="+valor;
+            window.location = "detalhes.html?produto="+valor;
         }
         
         var links = document.getElementsByTagName('a');
@@ -53,4 +53,3 @@ ajax.addEventListener("readystatechange", function(){
 
     }
 });
-
