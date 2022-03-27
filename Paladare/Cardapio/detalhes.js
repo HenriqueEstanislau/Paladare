@@ -13,8 +13,8 @@ ajax.addEventListener("readystatechange", function(){
 
         //Pego o ID que foi enviado pelo "produtos.js"
         const urlParams = new URLSearchParams(location.search);
-        console.log(urlParams.get('minhaVariavel'));
-        produtoID = urlParams.get('minhaVariavel');
+        console.log(urlParams.get('produto'));
+        produtoID = urlParams.get('produto');
 
         var exibirDados = document.getElementById("resultado");
         exibirDados.innerHTML = `
