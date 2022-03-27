@@ -116,6 +116,7 @@ section .subtitle{
     cursor: pointer;
     display: none;
 }
+
 .scroll-up-btn{
     position: fixed;
     height: 45px;
@@ -149,7 +150,7 @@ footer{
     background: #111;
     padding: 15px 23px;
     color: #fff;
-    text-align: center;
+    text-align: center;  
 }
 footer span a{
     color: #ff5722;
