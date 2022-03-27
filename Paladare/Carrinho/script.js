@@ -55,6 +55,20 @@ function renderItem(item) {
 function getItems() {
     // Pegando o array do sessionStorage
     const items = JSON.parse(sessionStorage.getItem('items'));
+
+    
+    if (items === null) {
+        var carrinhoExibir = document.getElementById("cart-null");
+        carrinhoExibir.innerHTML = `
+        <div class="noProduct">
+            <div class="small-title">Seu carrinho do Paladare está vazio</div>
+            <div class="small-subtitle">Dê uma olhada no nosso cardápio<div>
+            <a href="../Cardapio/index.html">Ver Cardápio</a>
+            
+        </div>
+        `
+    }
+
     // Para cada item do array, é renderizado no html
     items.forEach(item => renderItem(item));
     items.forEach(item => mensagem(item));
