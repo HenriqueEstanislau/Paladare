@@ -223,14 +223,41 @@ footer span a:hover{
     float: right;
 }
 .cart .cart-content .left .qty{
+    margin-top: 5px;
     font-size: 18px;
+    display: flex;
+    flex-direction: row;
 }
-.cart .cart-content .left .qty input{
+.cart .cart-content .left .qty a{
+    margin: 0px 10px;
     font-size: 18px;
-    width: 50px;
-    padding: 5px;
+    padding: 0px 3px;
+    color: blue;
+    /* background: rgb(230, 230, 230); */
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+}
+.cart .cart-content .left .qty .itemQuantity{
+    font-size: 18px;
+    width: 25px;
+    padding: 0px;
+    align-items: center;
+    text-align: center;
+    /* background-color: #555; */
+}
+.cart .cart-content .left .qtde{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0px 0px 0px 10px;
+    border: rgb(217, 217, 217);
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 1.5px;
 }
 .cart .cart-content .left .subtotal{
+    margin-top: 2px;
     font-size: 18px;
 }
 .cart .cart-content .left .remove{
