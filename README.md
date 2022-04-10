@@ -10,3 +10,4 @@ Ferramentas usadas na construção do projeto:
 - JSON
 - Ajax
 - sessionStorage
+- API Rest (WhatsApp)
