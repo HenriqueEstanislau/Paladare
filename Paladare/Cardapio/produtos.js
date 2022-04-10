@@ -10,7 +10,6 @@ ajax.addEventListener("readystatechange", function(){
 
         var resposta = ajax.response;
 
-
 //depois de pegar os dados agora é hora de mapealos montando o card dos produtos
         var containerCardsPedidos = document.getElementById('card-pedidos');
 
