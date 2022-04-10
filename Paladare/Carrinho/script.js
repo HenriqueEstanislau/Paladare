@@ -34,7 +34,6 @@ $(document).ready(function(){
     });
 });
 //----------------------------------
-var total = [0];
 
 function renderItem(item, idPosicao) {
     // Adicionando uma div com o item e a quantidade na div .items
@@ -49,8 +48,6 @@ function renderItem(item, idPosicao) {
         <div class="subtotal">Subtotal: ${parseFloat(item.qtd * item.preco).toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})} </div>
         <div class="remove"><a onclick='removeProd(${idPosicao})'>Remover</a></div>
     </div>`
-
-    total.push(parseFloat(item.qtd * item.preco));  
 }
 
 // Se o carrinho estiver vazio mostra uma mensagem na tela para o usuário olhar o cardápio
@@ -96,8 +93,9 @@ function getItems() {
             // Para cada item do array, é renderizado no html
             items.forEach((item, indexid) => {renderItem(item,indexid)});
             
-            // Atualizando a mensagem do whatsapp
+            // Atualizando a mensagem do whatsapp e o total
             mensagem();
+            totalFunc()
         }
      }
     
@@ -113,18 +111,28 @@ function removeProd(id){
 
     // atualiza op dadps ma tela
     getItems();
-
+    
 }
 
 
-function totalFunc(valor){
-    var totalFinal = 0;
+function totalFunc(){
+    
+    var totalFinal = [];
     var totalExibir = document.getElementById("total");
 
-    totalFinal = valor.reduce((totalFinal, currentElement) => totalFinal + currentElement);
+    let item = JSON.parse(sessionStorage.getItem('items'));
+
+    // Adicionando os itens no total
+    item.forEach((item, indexid) => {
+        totalFinal.push(parseFloat(item.qtd * item.preco));  
+    });
+
+    // Soma tudo e joga no total
+    totalFinal = totalFinal.reduce((totalFinal, currentElement) => totalFinal + currentElement);
     console.log("o totalFinal é de: " + totalFinal);
 
-    totalExibir.innerHTML += `Total: ${totalFinal.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}`
+    //Exibe o total
+    totalExibir.innerHTML = `Total: ${totalFinal.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}`
 }
 
 // Função do botão para mandar o pedido com os itens no whatsapp
@@ -142,4 +150,4 @@ function mensagem(){
     buttonWhatsApp.innerHTML =`<a href="${mensagemWhats} " target="_blank"><i class="fab fa-whatsapp"></i> Fazer pedido</a>`
 }
 getItems();
-totalFunc(total);
+totalFunc();
