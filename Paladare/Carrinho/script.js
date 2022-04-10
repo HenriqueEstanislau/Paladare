@@ -36,6 +36,7 @@ $(document).ready(function(){
 //----------------------------------
 
 function renderItem(item, idPosicao) {
+    
     // Adicionando uma div com o item e a quantidade na div .items
     var carrinhoExibir = document.getElementById("carrinho-produtos");
     
@@ -44,10 +45,57 @@ function renderItem(item, idPosicao) {
         <div class="name">${item.name}</div>
         <div class="price">${parseFloat(item.preco).toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}</div>
         <div style="clear:both"></div>
-        <div class="qty">Quantidade: <input type="number" id="qtd" value="${item.qtd}" min="1" step="1" class="itemQuantity"></div>
+        <div class="qty">
+            Quantidade: 
+                <div class="qtde">
+                    <a onclick='removeQtde(${idPosicao},${item.qtd})' id="remove">-</a>
+                    <div value="" class="itemQuantity" id="qtd">${item.qtd}</div>
+                    <a onclick='addQtde(${idPosicao},${item.qtd})' id="add">+</a>
+                </div>
+        </div>
         <div class="subtotal">Subtotal: ${parseFloat(item.qtd * item.preco).toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})} </div>
         <div class="remove"><a onclick='removeProd(${idPosicao})'>Remover</a></div>
     </div>`
+}
+
+function addQtde(idPosicao,quantidade){
+
+    if(quantidade >= 15){
+
+        console.log("tentou colocar um valor inválido");
+
+    }else{
+
+    let item = JSON.parse(sessionStorage.getItem('items'));
+    
+    // Soma +1 na quantidade e salva os dados no sessionStorage
+    item[idPosicao].qtd = `${quantidade + 1}`;
+    sessionStorage.setItem("items", JSON.stringify(item));
+    
+    // atualiza os dados na tela
+    getItems();
+    }
+}
+
+function removeQtde(idPosicao,quantidade){
+    
+    if(quantidade == 1){
+        
+        console.log("tentou colocar um valor inválido");
+
+    }else{
+    
+        let item = JSON.parse(sessionStorage.getItem('items'));
+    
+    // Subtrai -1 na quantidade e salva os dados no sessionStorage
+    item[idPosicao].qtd = `${quantidade - 1}`;
+    sessionStorage.setItem("items", JSON.stringify(item));
+
+    // atualiza os dados na tela
+    getItems();
+    }
+    
+    
 }
 
 // Se o carrinho estiver vazio mostra uma mensagem na tela para o usuário olhar o cardápio
@@ -72,16 +120,17 @@ function carrinhoVazio(){
 }
 
 function getItems() {
+
     // Pegando o array do sessionStorage e chamando a função carrinhoVazio por padrão
     let items = JSON.parse(sessionStorage.getItem('items'));
     carrinhoVazio();
-    
+
     //verificando se o items existe no sessionStorage
     if(sessionStorage.getItem('items')){
         if(items.length == 0){
             sessionStorage.removeItem('items');
 
-            //LIMPAR A TELA E MANDAR A MENSAGEM NA TELA QUE O CARRINHO É VAZIO
+            // Limpa a tela e exibe a mensagem na tela que o carrinho está vazio
             carrinhoVazio();
 
         }else{
@@ -92,7 +141,7 @@ function getItems() {
 
             // Para cada item do array, é renderizado no html
             items.forEach((item, indexid) => {renderItem(item,indexid)});
-            
+
             // Atualizando a mensagem do whatsapp e o total
             mensagem();
             totalFunc()
@@ -101,7 +150,6 @@ function getItems() {
     
 }
 
-
 function removeProd(id){
 
     // pego os dados da sessionStrorage e excluo o posição que o usuário clicou    
@@ -109,17 +157,14 @@ function removeProd(id){
     item.splice(id, 1);
     sessionStorage.setItem("items", JSON.stringify(item));
 
-    // atualiza op dadps ma tela
-    getItems();
-    
+    // atualiza os dados na tela
+    getItems();    
 }
-
 
 function totalFunc(){
     
     var totalFinal = [];
     var totalExibir = document.getElementById("total");
-
     let item = JSON.parse(sessionStorage.getItem('items'));
 
     // Adicionando os itens no total
@@ -147,6 +192,7 @@ function mensagem(){
         mensagemWhats += `%0A${(item.qtd).toString()} - ${(item.name).toString()};`;
     });
     
+    // Adicionando a mensagem do WhatsApp no botão
     buttonWhatsApp.innerHTML =`<a href="${mensagemWhats} " target="_blank"><i class="fab fa-whatsapp"></i> Fazer pedido</a>`
 }
 getItems();
