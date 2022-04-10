@@ -33,12 +33,13 @@ $(document).ready(function(){
         $('.menu-btn .fas.fa-bars').toggleClass("active");
     });
 });
+//----------------------------------
 var total = [0];
-var mensagemWhats = 'https://api.whatsapp.com/send?l=pt_BR&phone=5519994510784&text=Boa%20noite%20pessoal,%20gostaria%20de%20pedir:';
-function renderItem(item) {
+
+function renderItem(item, idPosicao) {
     // Adicionando uma div com o item e a quantidade na div .items
     var carrinhoExibir = document.getElementById("carrinho-produtos");
-
+    
     carrinhoExibir.innerHTML += `
     <div class="products">
         <div class="name">${item.name}</div>
@@ -46,18 +47,21 @@ function renderItem(item) {
         <div style="clear:both"></div>
         <div class="qty">Quantidade: <input type="number" id="qtd" value="${item.qtd}" min="1" step="1" class="itemQuantity"></div>
         <div class="subtotal">Subtotal: ${parseFloat(item.qtd * item.preco).toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})} </div>
-        <div class="remove"><a>Remover</a></div>
+        <div class="remove"><a onclick='removeProd(${idPosicao})'>Remover</a></div>
     </div>`
-    // var pos = indexOf(item)
+
     total.push(parseFloat(item.qtd * item.preco));  
 }
 
-function getItems() {
-    // Pegando o array do sessionStorage
-    const items = JSON.parse(sessionStorage.getItem('items'));
-
+// Se o carrinho estiver vazio mostra uma mensagem na tela para o usuário olhar o cardápio
+function carrinhoVazio(){
+    let items = JSON.parse(sessionStorage.getItem('items'));
     
+    console.log("Chamou o CARREGA DADOS");
+
     if (items === null) {
+        var carrinhoExibir = document.getElementById("cart-content");
+        carrinhoExibir.innerHTML = "";
         var carrinhoExibir = document.getElementById("cart-null");
         carrinhoExibir.innerHTML = `
         <div class="noProduct">
@@ -68,11 +72,51 @@ function getItems() {
         </div>
         `
     }
-
-    // Para cada item do array, é renderizado no html
-    items.forEach(item => renderItem(item));
-    items.forEach(item => mensagem(item));
 }
+
+function getItems() {
+    // Pegando o array do sessionStorage e chamando a função carrinhoVazio por padrão
+    let items = JSON.parse(sessionStorage.getItem('items'));
+    carrinhoVazio();
+    
+    //verificando se o items existe no sessionStorage
+    if(sessionStorage.getItem('items')){
+        if(items.length == 0){
+            sessionStorage.removeItem('items');
+
+            //LIMPAR A TELA E MANDAR A MENSAGEM NA TELA QUE O CARRINHO É VAZIO
+            carrinhoVazio();
+
+        }else{
+            
+            // Limpando o html
+            var carrinhoExibir = document.getElementById("carrinho-produtos");
+            carrinhoExibir.innerHTML="";
+
+            // Para cada item do array, é renderizado no html
+            items.forEach((item, indexid) => {renderItem(item,indexid)});
+            
+            // Atualizando a mensagem do whatsapp
+            mensagem();
+        }
+     }
+    
+}
+
+
+function removeProd(id){
+
+    // pego os dados da sessionStrorage e excluo o posição que o usuário clicou    
+    let item = JSON.parse(sessionStorage.getItem('items'));
+    item.splice(id, 1);
+    sessionStorage.setItem("items", JSON.stringify(item));
+
+    // atualiza op dadps ma tela
+    getItems();
+
+}
+
+
 function totalFunc(valor){
     var totalFinal = 0;
     var totalExibir = document.getElementById("total");
@@ -83,14 +127,19 @@ function totalFunc(valor){
     totalExibir.innerHTML += `Total: ${totalFinal.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}`
 }
 
-function mensagem(item){
+// Função do botão para mandar o pedido com os itens no whatsapp
+function mensagem(){
     var buttonWhatsApp = document.getElementById("buttonWhatsapp");
-    mensagemWhats += `%0A${(item.qtd).toString()} - ${(item.name).toString()};`;
+    var mensagemWhats = 'https://api.whatsapp.com/send?l=pt_BR&phone=5519994510784&text=Boa%20noite%20pessoal,%20gostaria%20de%20pedir:';
+    
+    let item = JSON.parse(sessionStorage.getItem('items'));
 
+    // Adicionando os itens na mensagem
+    item.forEach((item, indexid) => {
+        mensagemWhats += `%0A${(item.qtd).toString()} - ${(item.name).toString()};`;
+    });
+    
     buttonWhatsApp.innerHTML =`<a href="${mensagemWhats} " target="_blank"><i class="fab fa-whatsapp"></i> Fazer pedido</a>`
 }
 getItems();
 totalFunc(total);
-
-
-//document.getElementById("qtd").addEventListener("click", renderItem)
