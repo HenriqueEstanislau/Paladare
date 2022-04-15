@@ -54,7 +54,7 @@ ajax.addEventListener("readystatechange", function(){
 
 
             // If para verificar se a quantidade esta correta
-            if ((qtd >= 1) && (qtd <= 15)){
+            if ((qtd >= 1) && (qtd <= 15) && !(parseInt(qtd) != parseFloat(qtd))){
 
 
               /* 
@@ -95,14 +95,12 @@ ajax.addEventListener("readystatechange", function(){
               setTimeout(()=>{
                   splash.classList.remove('display-none')
               }, 0)
+              
             }else{
-
               const erro = document.getElementById("error");
               erro.innerHTML = `* Você não pode adicionar ${qtd} itens`
 
             }
-
-      
             
         }     
 
