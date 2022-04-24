@@ -122,6 +122,12 @@ section .subtitle{
     cursor: pointer;
     display: none;
 }
+.menu-cart{
+    color: #fff;
+    font-size: 23px;
+    cursor: pointer;
+    display: none;
+}
 .scroll-up-btn{
     position: fixed;
     height: 45px;
@@ -516,6 +522,28 @@ footer span a:hover{
     }
 }
 @media (max-width: 947px){
+    .navbar .menu-cart{
+        display: flex;
+    }
+    .navbar .menu-cart i{
+        text-decoration: none;
+        color: #fff;
+        font-size: 23px;
+        cursor: pointer;
+    }
+    .navbar .menu-cart span{
+        text-decoration: none;
+        color: #fff;
+        font-size: 16px;
+        background: #d6471c;
+        padding: 0px 6px 0px 5px;
+        border-radius: 5px;
+        margin: 0px 0px 0px 5px;
+        position: relative;
+        top: -10px;
+        z-index: -1;
+        cursor: pointer;
+    }
     .menu-btn{
         display: block;
         z-index: 999;
