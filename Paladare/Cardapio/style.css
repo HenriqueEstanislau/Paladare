@@ -81,6 +81,7 @@ section .subtitle{
     align-items: center;
     justify-content: space-between;
 }
+
 .navbar .logo a{
     color: #fff;
     font-size: 35px;
@@ -111,6 +112,13 @@ section .subtitle{
 
 /* menu btn styling */
 .menu-btn{
+    color: #fff;
+    font-size: 23px;
+    cursor: pointer;
+    display: none;
+}
+
+.menu-cart{
     color: #fff;
     font-size: 23px;
     cursor: pointer;
@@ -200,6 +208,28 @@ footer span a:hover{
         text-align: center;
         padding-top: 80px;
         transition: all 0.3s ease;
+    }
+    .navbar .menu-cart{
+        display: flex;
+    }
+    .navbar .menu-cart i{
+        text-decoration: none;
+        color: #fff;
+        font-size: 23px;
+        cursor: pointer;
+    }
+    .navbar .menu-cart span{
+        text-decoration: none;
+        color: #fff;
+        font-size: 16px;
+        background: #d6471c;
+        padding: 0px 6px 0px 5px;
+        border-radius: 5px;
+        margin: 0px 0px 0px 5px;
+        position: relative;
+        top: -10px;
+        z-index: -1;
+        cursor: pointer;
     }
     .navbar .menu.active{
         left: 0;
