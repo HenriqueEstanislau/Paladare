@@ -132,6 +132,7 @@ function getItems() {
 
             // Limpa a tela e exibe a mensagem na tela que o carrinho está vazio
             carrinhoVazio();
+            atualizaQtdeCart();
 
         }else{
             
@@ -145,6 +146,7 @@ function getItems() {
             // Atualizando a mensagem do whatsapp e o total
             mensagem();
             totalFunc()
+            atualizaQtdeCart();
         }
      }
     
@@ -195,5 +197,23 @@ function mensagem(){
     // Adicionando a mensagem do WhatsApp no botão
     buttonWhatsApp.innerHTML =`<a href="${mensagemWhats} " target="_blank"><i class="fab fa-whatsapp"></i> Fazer pedido</a>`
 }
+
+// Mostra a quantidade de itens do carrinho da barra de navegacao
+function atualizaQtdeCart(){
+    let exibeQtdeCart = document.getElementById("cont-cart");
+    let item = JSON.parse(sessionStorage.getItem('items'));
+    let qtde = []
+    if(item != null){
+        item.forEach((item) => {
+            qtde.push(parseInt(item.qtd));  
+        });
+        let total = qtde.reduce((total, qtde) => total + qtde, 0);
+        exibeQtdeCart.innerHTML = `${total}`
+    }else{
+        exibeQtdeCart.innerHTML = `0`
+    }
+}
+
+atualizaQtdeCart();
 getItems();
 totalFunc();
