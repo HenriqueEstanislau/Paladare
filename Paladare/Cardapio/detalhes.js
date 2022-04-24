@@ -95,6 +95,10 @@ ajax.addEventListener("readystatechange", function(){
                     splash.classList.remove('display-none')
                 }, 0)
                 
+
+                //----------- atualiza qtde carrinho -----------
+                atualizaQtdeCart();
+
               }else{
                 const erro = document.getElementById("error");
                 erro.innerHTML = `* Você não pode adicionar ${qtd} itens`
@@ -106,3 +110,21 @@ ajax.addEventListener("readystatechange", function(){
         }     
     }
 });
+
+// Mostra a quantidade de itens do carrinho
+function atualizaQtdeCart(){
+  let exibeQtdeCart = document.getElementById("cont-cart");
+  let item = JSON.parse(sessionStorage.getItem('items'));
+  let qtde = []
+  if(item != null){
+      item.forEach((item) => {
+          qtde.push(parseInt(item.qtd));  
+      });
+      let total = qtde.reduce((total, qtde) => total + qtde, 0);
+      exibeQtdeCart.innerHTML = `${total}`
+  }else{
+      exibeQtdeCart.innerHTML = `0`
+  }
+}
+
+atualizaQtdeCart();
