@@ -167,6 +167,7 @@ section .subtitle{
     background-size: cover;
     background-attachment: fixed;
     font-family: 'Ubuntu', sans-serif;
+    flex-wrap: wrap;
 }
 .home .max-width{
     margin: auto 0 auto 30px;
@@ -202,6 +203,46 @@ section .subtitle{
 .home .home-content a:hover{
     color: #fff;
     background: none;
+}
+
+.home .arrow {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    flex-wrap: wrap;
+    /* left: 50%; */
+    bottom: 5%;
+    left: 47%;
+    justify-content: center;
+    margin: 0px;
+    padding: 0px;
+    /* flex-basis: 100%; */
+}
+
+.home .arrow span{
+    text-align: center;
+    font-size: 40px;
+    color: #fff;
+    background: rgba(91, 91, 91, 0.8);
+    background: #ff56228f;
+    border-radius: 90px;
+    padding: 3px;
+    /* animation: animate 2.5s linear infinite; */
+    animation: animate 2s 3;
+    position: relative;
+}
+
+@keyframes animate {
+    0%{
+        top: 0px;
+        animation-delay: 2s;
+    }
+    50%{
+        top: 8px;
+    }
+    100%{
+        top: 0px;
+    }
 }
 
 /* about section styling */
