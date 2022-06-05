@@ -210,13 +210,11 @@ section .subtitle{
     flex-direction: row;
     position: absolute;
     flex-wrap: wrap;
-    /* left: 50%; */
     bottom: 5%;
     left: 47%;
     justify-content: center;
     margin: 0px;
     padding: 0px;
-    /* flex-basis: 100%; */
 }
 
 .home .arrow span{
@@ -227,7 +225,6 @@ section .subtitle{
     background: #ff56228f;
     border-radius: 90px;
     padding: 3px;
-    /* animation: animate 2.5s linear infinite; */
     animation: animate 2s 3;
     position: relative;
 }
