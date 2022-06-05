@@ -211,7 +211,7 @@ section .subtitle{
     position: absolute;
     flex-wrap: wrap;
     bottom: 5%;
-    left: 47%;
+    left: calc(50% - 25px);
     justify-content: center;
     margin: 0px;
     padding: 0px;
@@ -221,7 +221,6 @@ section .subtitle{
     text-align: center;
     font-size: 40px;
     color: #fff;
-    background: rgba(91, 91, 91, 0.8);
     background: #ff56228f;
     border-radius: 90px;
     padding: 3px;
